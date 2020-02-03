@@ -14,7 +14,7 @@ trait PhoneNumberApi {
   final def formatNational(phoneNumber: PhoneNumber): String =
     parseUnderlying(phoneNumber.raw).fold(_ => phoneNumber.raw, formatNational)
 
-  final def parse(string: String) = parseUnderlying(string).map(fromUnderlying)
+  final def parse(string: String): Try[PhoneNumber] = parseUnderlying(string).map(fromUnderlying)
 
   def isValid(underlying: Underlying): Boolean
 
