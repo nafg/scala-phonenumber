@@ -23,4 +23,6 @@ object PhoneNumbers extends PhoneNumberApi {
 
   def matches(a: PhoneNumber, b: PhoneNumber) =
     formatNational(a) == formatNational(b)
+
+  override def isValid(underlying: Underlying) = underlying.isValid()
 }

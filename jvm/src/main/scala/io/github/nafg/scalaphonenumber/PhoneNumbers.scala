@@ -27,4 +27,6 @@ object PhoneNumbers extends PhoneNumberApi {
 
   override def formatNational(underlying: Underlying) =
     PhoneNumberUtil.format(underlying, PhoneNumberFormat.NATIONAL)
+
+  override def isValid(underlying: Underlying) = PhoneNumberUtil.isValidNumber(underlying)
 }
