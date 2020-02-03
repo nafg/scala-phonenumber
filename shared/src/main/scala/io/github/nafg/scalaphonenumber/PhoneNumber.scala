@@ -4,7 +4,10 @@ import io.circe.generic.semiauto._
 import io.circe.{Decoder, Encoder}
 
 
-case class PhoneNumber private(raw: String) extends AnyVal
+case class PhoneNumber private(raw: String) extends AnyVal {
+  def formatNational(implicit api: PhoneNumberApi): String = api.formatNational(this)
+  def isValid(implicit api: PhoneNumberApi): Boolean = api.isValid(raw)
+}
 
 object PhoneNumber {
   def raw(string: String) = PhoneNumber(string)
