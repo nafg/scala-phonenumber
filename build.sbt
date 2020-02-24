@@ -8,7 +8,7 @@ ThisBuild / scalaVersion := (ThisBuild / crossScalaVersions).value.last
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
-def circeVersion = "0.12.3"
+def circeVersion = "0.13.0"
 
 lazy val scalaPhoneNumber =
   crossProject(JVMPlatform, JSPlatform).crossType(CrossType.Full)
@@ -17,6 +17,6 @@ lazy val scalaPhoneNumber =
       name := "scala-phonenumber",
       libraryDependencies += "io.circe" %%% "circe-generic" % circeVersion
     )
-    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.11.3")
+    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.11.4")
     .jsConfigure(_.enablePlugins(ScalaJSBundlerPlugin))
     .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.7.34")
