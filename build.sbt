@@ -2,7 +2,10 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 
 ThisBuild / organization := "io.github.nafg.scala-phonenumber"
-ThisBuild / scalaVersion := "2.12.10"
+
+ThisBuild / crossScalaVersions := Seq("2.12.10", "2.13.1")
+ThisBuild / scalaVersion := (ThisBuild / crossScalaVersions).value.last
+
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
 def circeVersion = "0.12.3"
