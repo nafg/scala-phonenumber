@@ -1,5 +1,5 @@
-val sjsVer = sys.env.getOrElse("SCALAJS_VERSION", "1.3.0")
-addSbtPlugin("ch.epfl.scala" % s"sbt-scalajs-bundler${if (sjsVer.startsWith("0.6")) "-sjs06" else ""}" % "0.18.0")
+val sjsVer = sys.env.getOrElse("SCALAJS_VERSION", "1.2.0")
+addSbtPlugin("ch.epfl.scala" % s"sbt-scalajs-bundler${if (sjsVer.startsWith("0.6")) "-sjs06" else ""}" % "0.19.0")
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % sjsVer)
 
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
