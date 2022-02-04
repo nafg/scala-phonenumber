@@ -1,9 +1,13 @@
+defaults: {}
+queue_rules:
+  - name: default
+    conditions: []
 pull_request_rules:
-  - name: automatic merge successful scala-steward PRs
+  - name: Automatically merge successful scala-steward PRs
     conditions:
       - author=scala-steward
-      - status-success=Travis CI - Pull Request
+      - check-success=Build and Test (ubuntu-latest, 2.12.10, temurin@11)
+      - check-success=Build and Test (ubuntu-latest, 2.13.1, temurin@11)
     actions:
-      merge:
-        method: merge
-        strict: true
+        queue:
+            name: default
