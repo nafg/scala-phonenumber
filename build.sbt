@@ -19,4 +19,4 @@ lazy val scalaPhoneNumber =
     )
     .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.12.42")
     .jsConfigure(_.enablePlugins(ScalaJSBundlerPlugin))
-    .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.7.34")
+    .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.9.47")
