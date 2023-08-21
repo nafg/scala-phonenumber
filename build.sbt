@@ -4,7 +4,7 @@ import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 ThisBuild / organization := "io.github.nafg.scala-phonenumber"
 
 ThisBuild / scalaVersion := "3.2.2"
-ThisBuild / crossScalaVersions := Seq("2.13.10", (ThisBuild / scalaVersion).value)
+ThisBuild / crossScalaVersions := Seq("2.13.11", (ThisBuild / scalaVersion).value)
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
@@ -17,6 +17,6 @@ lazy val scalaPhoneNumber =
       name := "scala-phonenumber",
       libraryDependencies += "io.circe" %%% "circe-generic" % circeVersion
     )
-    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.13")
+    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.19")
     .jsConfigure(_.enablePlugins(ScalaJSBundlerPlugin))
     .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.9.47")
