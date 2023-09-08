@@ -17,6 +17,6 @@ lazy val scalaPhoneNumber =
       name := "scala-phonenumber",
       libraryDependencies += "io.circe" %%% "circe-generic" % circeVersion
     )
-    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.19")
+    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.20")
     .jsConfigure(_.enablePlugins(ScalaJSBundlerPlugin))
     .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.9.47")
