@@ -8,7 +8,7 @@ ThisBuild / crossScalaVersions := Seq("2.13.11", (ThisBuild / scalaVersion).valu
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
-def circeVersion = "0.14.5"
+def circeVersion = "0.14.6"
 
 lazy val scalaPhoneNumber =
   crossProject(JVMPlatform, JSPlatform).crossType(CrossType.Full)
