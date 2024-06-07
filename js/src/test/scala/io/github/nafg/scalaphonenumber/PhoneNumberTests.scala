@@ -2,7 +2,7 @@ package io.github.nafg.scalaphonenumber
 import io.github.nafg.scalaphonenumber.Implicits.phoneNumberApi
 
 class PhoneNumberTests extends munit.FunSuite {
-  private val number = PhoneNumbers.parse("12345678901").get
+  private val number = PhoneNumbers.parse("12345678901", Some("US")).get
 
   test("PhoneNumber#formatNational") {
     assertEquals(number.formatNational, "(234) 567-8901")

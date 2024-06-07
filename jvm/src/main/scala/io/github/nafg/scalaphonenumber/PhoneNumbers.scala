@@ -1,10 +1,10 @@
 package io.github.nafg.scalaphonenumber
 
 import com.google.i18n.phonenumbers
+import com.google.i18n.phonenumbers.PhoneNumberUtil.{MatchType, PhoneNumberFormat}
 import com.google.i18n.phonenumbers.{PhoneNumberUtil, Phonenumber}
 
 import scala.util.Try
-import com.google.i18n.phonenumbers.PhoneNumberUtil.{MatchType, PhoneNumberFormat}
 
 object PhoneNumbers extends PhoneNumberApi {
   override type Underlying = com.google.i18n.phonenumbers.Phonenumber.PhoneNumber
@@ -17,16 +17,14 @@ object PhoneNumbers extends PhoneNumberApi {
   def matches(underlying: Underlying, string: String): Boolean =
     matchTypes contains PhoneNumberUtil.isNumberMatch(underlying, string)
 
-  private val country = "US" // TODO
-
-  override def possibleNumber(string: String): Boolean =
-    PhoneNumberUtil.isPossibleNumber(string, country)
+  override def possibleNumber(string: String, defaultCountry: Option[String] = None): Boolean =
+    PhoneNumberUtil.isPossibleNumber(string, defaultCountry.orNull)
 
   override def fromUnderlying(underlying: Underlying): PhoneNumber =
     PhoneNumber.raw(PhoneNumberUtil.format(underlying, PhoneNumberFormat.E164))
 
-  override def parseUnderlying(string: String): Try[Underlying] = Try {
-    PhoneNumberUtil.parse(string, country)
+  override def parseUnderlying(string: String, defaultCountry: Option[String] = None): Try[Underlying] = Try {
+    PhoneNumberUtil.parse(string, defaultCountry.orNull)
   }
 
   override def formatNational(underlying: Underlying): String =
