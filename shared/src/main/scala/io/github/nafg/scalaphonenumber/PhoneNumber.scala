@@ -5,11 +5,12 @@ import io.circe.{Decoder, Encoder}
 import scala.util.Try
 
 case class PhoneNumber private (raw: String) extends AnyVal {
-  def format(format: PhoneNumber.Format)(implicit api: PhoneNumberApi): String = api.format(this, format)
-  def formatNational(implicit api: PhoneNumberApi): String                     = format(PhoneNumber.Format.National)
-  def formatInternational(implicit api: PhoneNumberApi): String                =
+  def format(format: PhoneNumber.Format)(implicit api: PhoneNumberApi): String  = api.format(this, format)
+  def formatNational(implicit api: PhoneNumberApi): String                      = format(PhoneNumber.Format.National)
+  def formatInternational(implicit api: PhoneNumberApi): String                 =
     format(PhoneNumber.Format.International)
-  def formatE164(implicit api: PhoneNumberApi): String                         = format(PhoneNumber.Format.E164)
+  def formatE164(implicit api: PhoneNumberApi): String                          = format(PhoneNumber.Format.E164)
+  def formatLocal(implicit api: PhoneNumberApi, countryCodes: Set[Int]): String = api.formatLocal(this, countryCodes)
 
   def isValid(implicit api: PhoneNumberApi): Boolean = api.isValid(raw)
 }

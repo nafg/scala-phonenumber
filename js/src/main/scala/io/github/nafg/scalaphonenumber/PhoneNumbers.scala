@@ -19,10 +19,11 @@ object PhoneNumbers extends PhoneNumberApi {
     LibphonenumberJs.parsePhoneNumberWithError(string, defaultCountry.orUndefined)
   }
 
-  override def formatNational(underlying: Underlying): String =
-    underlying.formatNational()
+  override def countryCode(underlying: Underlying): Option[Int] = underlying.countryCallingCode.toIntOption
 
-  override def format(underlying: Underlying, format: PhoneNumber.Format): String =
+  override def formatNational(underlying: Underlying): String                        =
+    underlying.formatNational()
+  override def format(underlying: Underlying, format: PhoneNumber.Format): String    =
     underlying.format(format match {
       case PhoneNumber.Format.National      => "NATIONAL"
       case PhoneNumber.Format.International => "INTERNATIONAL"
