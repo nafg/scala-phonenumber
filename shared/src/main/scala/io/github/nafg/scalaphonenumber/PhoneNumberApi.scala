@@ -5,9 +5,9 @@ import scala.util.Try
 trait PhoneNumberApi {
   type Underlying
 
-  def possibleNumber(string: String): Boolean
+  def possibleNumber(string: String, defaultCountry: Option[String] = None): Boolean
   def fromUnderlying(underlying: Underlying): PhoneNumber
-  def parseUnderlying(string: String): Try[Underlying]
+  def parseUnderlying(string: String, defaultCountry: Option[String] = None): Try[Underlying]
   def formatNational(underlying: Underlying): String
   def format(underlying: Underlying, format: PhoneNumber.Format): String
 
@@ -22,7 +22,8 @@ trait PhoneNumberApi {
       format(_, numberFormat)
     )
 
-  final def parse(string: String): Try[PhoneNumber] = parseUnderlying(string).map(fromUnderlying)
+  final def parse(string: String, defaultCountry: Option[String] = None): Try[PhoneNumber] =
+    parseUnderlying(string, defaultCountry).map(fromUnderlying)
 
   def isValid(underlying: Underlying): Boolean
 

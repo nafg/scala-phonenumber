@@ -1,23 +1,22 @@
 package io.github.nafg.scalaphonenumber
 
 import io.github.nafg.scalaphonenumber.PhoneNumber.Format
-
-import scala.util.Try
 import io.github.nafg.scalaphonenumber.facade.LibphonenumberJs
+
+import scala.scalajs.js.JSConverters.JSRichOption
+import scala.util.Try
 
 object PhoneNumbers extends PhoneNumberApi {
   override type Underlying = LibphonenumberJs.PhoneNumber
 
-  override def possibleNumber(string: String): Boolean =
-    parseUnderlying(string).fold(_ => false, _.isPossible())
+  override def possibleNumber(string: String, defaultCountry: Option[String] = None): Boolean =
+    LibphonenumberJs.isPossiblePhoneNumber(string, defaultCountry.orUndefined)
 
   override def fromUnderlying(underlying: Underlying): PhoneNumber =
     PhoneNumber.raw(underlying.number)
 
-  private val country = "US" // TODO
-
-  override def parseUnderlying(string: String): Try[Underlying] = Try {
-    LibphonenumberJs.parsePhoneNumber(string, country)
+  override def parseUnderlying(string: String, defaultCountry: Option[String] = None): Try[Underlying] = Try {
+    LibphonenumberJs.parsePhoneNumberWithError(string, defaultCountry.orUndefined)
   }
 
   override def formatNational(underlying: Underlying): String =
