@@ -27,9 +27,11 @@ object PhoneNumbers extends PhoneNumberApi {
     PhoneNumberUtil.parse(string, defaultCountry.orNull)
   }
 
-  override def formatNational(underlying: Underlying): String =
-    PhoneNumberUtil.format(underlying, PhoneNumberFormat.NATIONAL)
+  override def countryCode(underlying: Phonenumber.PhoneNumber): Option[Int] =
+    Option.when(underlying.hasCountryCode)(underlying.getCountryCode)
 
+  override def formatNational(underlying: Underlying): String                     =
+    PhoneNumberUtil.format(underlying, PhoneNumberFormat.NATIONAL)
   override def format(underlying: Underlying, format: PhoneNumber.Format): String =
     PhoneNumberUtil.format(
       underlying,
