@@ -19,5 +19,9 @@ lazy val scalaPhoneNumber =
       libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.0" % Test
     )
     .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.38")
-    .jsConfigure(_.enablePlugins(ScalaJSBundlerPlugin))
-    .jsSettings(Compile / npmDependencies += "libphonenumber-js" -> "1.11.3")
+    .jsEnablePlugins(ScalaJSBundlerPlugin, ScalablyTypedConverterGenSourcePlugin)
+    .jsSettings(
+      Compile / npmDependencies += "libphonenumber-js" -> "1.11.3",
+      stOutputPackage                                  := "io.github.nafg.scalaphonenumber.facade",
+      stMinimize                                       := Selection.AllExcept("libphonenumber-js")
+    )
