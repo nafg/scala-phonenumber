@@ -15,8 +15,10 @@ lazy val scalaPhoneNumber =
     .in(file("."))
     .settings(
       name                                    := "scala-phonenumber",
+      coverageExcludedPackages                := "io.github.nafg.scalaphonenumber.facade",
       libraryDependencies += "io.circe"      %%% "circe-generic" % circeVersion,
-      libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.0" % Test
+      libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.0" % Test,
+      addCommandAlias("testAndCoverage", "test;coverageReport;coverageAggregate")
     )
     .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.39")
     .jsEnablePlugins(ScalaJSBundlerPlugin, ScalablyTypedConverterGenSourcePlugin)
