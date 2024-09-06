@@ -7,7 +7,7 @@ ThisBuild / crossScalaVersions := Seq("2.13.14", (ThisBuild / scalaVersion).valu
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
-def circeVersion = "0.14.9"
+def circeVersion = "0.14.10"
 
 lazy val scalaPhoneNumber =
   crossProject(JVMPlatform, JSPlatform)
@@ -20,7 +20,7 @@ lazy val scalaPhoneNumber =
       libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.1" % Test,
       addCommandAlias("testAndCoverage", "test;coverageReport;coverageAggregate")
     )
-    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.44")
+    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.45")
     .jsEnablePlugins(ScalaJSBundlerPlugin, ScalablyTypedConverterGenSourcePlugin)
     .jsSettings(
       Compile / npmDependencies += "libphonenumber-js" -> "1.11.3",
