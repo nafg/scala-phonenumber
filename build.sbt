@@ -20,7 +20,7 @@ lazy val scalaPhoneNumber =
       libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.3" % Test,
       addCommandAlias("testAndCoverage", "test;coverageReport;coverageAggregate")
     )
-    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.51")
+    .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.52")
     .jsEnablePlugins(ScalaJSBundlerPlugin, ScalablyTypedConverterGenSourcePlugin)
     .jsSettings(
       Compile / npmDependencies += "libphonenumber-js" -> "1.11.12",
