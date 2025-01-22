@@ -17,7 +17,7 @@ lazy val scalaPhoneNumber =
       name                                    := "scala-phonenumber",
       coverageExcludedPackages                := "io.github.nafg.scalaphonenumber.facade",
       libraryDependencies += "io.circe"      %%% "circe-generic" % circeVersion,
-      libraryDependencies += "org.scalameta" %%% "munit"         % "1.0.4" % Test,
+      libraryDependencies += "org.scalameta" %%% "munit"         % "1.1.0" % Test,
       addCommandAlias("testAndCoverage", "test;coverageReport;coverageAggregate")
     )
     .jvmSettings(libraryDependencies += "com.googlecode.libphonenumber" % "libphonenumber" % "8.13.53")
