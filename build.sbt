@@ -2,7 +2,7 @@ import sbtcrossproject.CrossPlugin.autoImport.{CrossType, crossProject}
 
 ThisBuild / organization := "io.github.nafg.scala-phonenumber"
 
-ThisBuild / scalaVersion       := "3.3.5"
+ThisBuild / scalaVersion       := "3.3.6"
 ThisBuild / crossScalaVersions := Seq("2.13.16", (ThisBuild / scalaVersion).value)
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
