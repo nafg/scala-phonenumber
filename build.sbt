@@ -7,6 +7,8 @@ ThisBuild / crossScalaVersions := Seq("2.13.18", (ThisBuild / scalaVersion).valu
 
 ThisBuild / scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
 
+ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
+
 def circeVersion = "0.14.16"
 
 lazy val scalaPhoneNumber =
